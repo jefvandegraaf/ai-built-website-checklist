@@ -1,5 +1,7 @@
 # AI-Built Website Checklist
 
+> **Beta.** This public version is new and still being tested on more sites. It's based on the launch checks I run on my own and my clients' websites. Some warnings are judgement calls. If a check gets something wrong, please [open an issue](https://github.com/jefvandegraaf/ai-built-website-checklist/issues).
+
 A free pre- and post-launch audit for AI-built small business websites. Point it at your site, and it tells you what's broken, why it matters, and gives you a copy-paste Claude prompt to fix each item.
 
 AI-built sites look great on a 27-inch monitor and quietly fail on the boring details. This catches them before your customers (or Google) do.
