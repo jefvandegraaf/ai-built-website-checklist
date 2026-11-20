@@ -629,7 +629,7 @@ Pages with impressions but no clicks need better titles and descriptions. Pages 
 
 ## After that: ongoing growth
 
-Striking-distance keywords, low-CTR rewrites, cannibalisation, 90-day pruning and scheduled reports are covered by the next project: **claude-gsc-seo-command-center**.
+Striking-distance keywords, low-CTR rewrites, cannibalisation, 90-day pruning and scheduled reports are covered by the free [Claude GSC SEO Command Center](https://github.com/jefvandegraaf/claude-gsc-seo-command-center): a weekly report and Monday email with fix prompts.
 
 ---
 

@@ -36,7 +36,7 @@ for (const [t, d] of [
 ]) out.push(`### ☐ ${t}`, d, '');
 
 out.push('## After that: ongoing growth', '');
-out.push('Striking-distance keywords, low-CTR rewrites, cannibalisation, 90-day pruning and scheduled reports are covered by the next project: **claude-gsc-seo-command-center**.', '');
+out.push('Striking-distance keywords, low-CTR rewrites, cannibalisation, 90-day pruning and scheduled reports are covered by the free [Claude GSC SEO Command Center](https://github.com/jefvandegraaf/claude-gsc-seo-command-center): a weekly report and Monday email with fix prompts.', '');
 out.push('---', '', 'Made by [Jef van de Graaf](https://jefvandegraaf.com/ai-website-launch-checklist/). Content licensed CC BY 4.0, code MIT.');
 
 const here = dirname(fileURLToPath(import.meta.url));
