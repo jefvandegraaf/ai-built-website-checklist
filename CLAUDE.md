@@ -44,6 +44,8 @@ Individual scripts (same flags, add `--json` for raw results):
 - `scripts/check-url.mjs <url>`: HTTPS, www, robots.txt, sitemap, canonicals, noindex leaks, 404s, exposed files, favicon, OG tags, schema, security headers, placeholders on live pages
 - `scripts/check-source.mjs <folder>`: secrets, private files in the publish folder, placeholders, `_headers`/`_redirects`, per-page SEO tags, `100vw`, layout animations, debug leftovers
 - `scripts/check-layout.mjs <url>`: real browser at 375px and 1440px: sideways wobble, tap targets, input zoom, off-centre icons, one-word heading lines, hero image priority, layout shift, broken images, JS errors
+- `scripts/check-speed.mjs <url>`: Google PageSpeed Insights, phone and desktop: scores, real-visitor Core Web Vitals, biggest wins. Needs a free Google API key in the `PSI_API_KEY` environment variable. The user creates the key and sets the variable themselves; never ask them to paste it into the chat or a file. Skip with `--no-speed`.
+- `scripts/indexnow.mjs`: sets up and submits IndexNow (see below). It's not part of the audit.
 
 On Windows Git Bash, page paths starting with `/` get mangled. Prefix with `MSYS_NO_PATHCONV=1` when using `--pages`.
 
@@ -62,9 +64,17 @@ Ask: "Want me to fix these in your project? I'd start with [the worst one]." Wor
 
 ---
 
+## IndexNow and getting pages indexed
+
+IndexNow pings Bing, Yandex, Naver, Seznam and Yep (and through Bing: ChatGPT search, Copilot, DuckDuckGo). **Google doesn't use it.**
+
+1. One-time: `node scripts/indexnow.mjs setup --publish <their publish folder>`. This writes a `<key>.txt` file. They deploy, then `submit --all` once. The key is public by design; it isn't a secret.
+2. After every new or updated page: `node scripts/indexnow.mjs submit --site https://theirdomain.com --publish <folder>` (pages with a sitemap `<lastmod>` in the last 7 days) or `--urls <url>`.
+3. **Always remind them about Google:** Search Console → URL Inspection → paste the URL → Request indexing. It's the step DIY owners skip. Don't automate it through their browser; Google rate-limits it and doesn't allow automation.
+
 ## The checklist
 
-`CHECKLIST.md` is the full human-readable list (Phase 1: pre-launch, Phase 2: launch day, Phase 3: first 30 days). `lib/checks.mjs` holds the same items with the fix prompts the scripts use. Keep them in step if you change either.
+`CHECKLIST.md` is the full human-readable list (pre-launch, launch day, every time you publish, first 30 days). It's generated from `lib/checks.mjs` by `node scripts/build-checklist.mjs`; edit the source, then regenerate. `lib/checks.mjs` holds the same items with the fix prompts the scripts use. Keep them in step if you change either.
 
 ## After launch
 

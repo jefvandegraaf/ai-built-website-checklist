@@ -13,7 +13,9 @@
     "check:source": "node scripts/check-source.mjs",
     "check:layout": "node scripts/check-layout.mjs",
     "setup:browser": "playwright install chromium",
-    "build:checklist": "node scripts/build-checklist.mjs"
+    "build:checklist": "node scripts/build-checklist.mjs",
+    "check:speed": "node scripts/check-speed.mjs",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "playwright": "^1.50.0"

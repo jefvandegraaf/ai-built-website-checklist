@@ -4,7 +4,8 @@
 //   node scripts/audit.mjs --url https://yourdomain.com
 //   node scripts/audit.mjs --dir ../my-business-website
 //   node scripts/audit.mjs --url https://yourdomain.com --dir ../my-business-website --pages-dev https://project.pages.dev
-// Options: --publish site  --max-pages 20  --no-layout  --out reports/custom.md
+// Options: --publish site  --max-pages 20  --no-layout  --no-speed  --out reports/custom.md
+// Speed uses Google PageSpeed Insights; set PSI_API_KEY for regular use.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,6 +13,7 @@ import { parseArgs, markdownReport, summary, printSummary } from '../lib/util.mj
 import { run as runUrl } from './check-url.mjs';
 import { run as runSource } from './check-source.mjs';
 import { run as runLayout } from './check-layout.mjs';
+import { run as runSpeed } from './check-speed.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const args = parseArgs(process.argv.slice(2));
@@ -33,6 +35,11 @@ if (args.url) {
     results.push(...await runLayout({ url: args.url, maxPages: Math.min(maxPages, 8) }));
     ran.push('check-layout');
   }
+  if (!args['no-speed']) {
+    console.log('Running Google PageSpeed Insights on the home page (phone + desktop, about a minute)…');
+    results.push(...await runSpeed({ url: args.url, pages: ['/'] }));
+    ran.push('check-speed');
+  }
 }
 if (args.dir) {
   console.log(`Checking project folder ${args.dir}…`);
@@ -50,4 +57,4 @@ printSummary(results, 'Results');
 const s = summary(results);
 console.log(`\n${s.fail} to fix · ${s.warn} to review · ${s.pass} passed`);
 console.log(`Full report with fix prompts: ${out}`);
-process.exit(s.fail ? 1 : 0);
+process.exitCode = s.fail ? 1 : 0;

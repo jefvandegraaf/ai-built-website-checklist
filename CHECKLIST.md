@@ -509,6 +509,32 @@ Help me add a privacy-friendly analytics tool and exclude my own visits (the too
 
 </details>
 
+### ☐ Fast on phones (PageSpeed Insights)
+*Checked by: check-speed*
+
+Google uses real-visitor speed (Core Web Vitals) in rankings, and slow pages lose callers. Lab scores show what to fix; real-visitor data shows what people actually experience.
+
+<details><summary>Fix it with Claude</summary>
+
+```
+Here is my PageSpeed Insights result for [page]: [paste the report section]. Fix the biggest wins one at a time, starting with the largest time saving. Don't change how the page looks. After each fix, tell me what changed so I can re-test.
+```
+
+</details>
+
+### ☐ IndexNow set up (Bing, ChatGPT search, Copilot)
+*Checked by: you*
+
+IndexNow tells Bing, Yandex, Naver, Seznam and Yep about new pages within minutes, and Bing feeds ChatGPT search, Copilot and DuckDuckGo. Google doesn't use it.
+
+<details><summary>Fix it with Claude</summary>
+
+```
+Set up IndexNow for my site: run "node scripts/indexnow.mjs setup --publish <my publish folder>" from the checklist repo, deploy, check the key file is live, then submit all my sitemap URLs once with --all.
+```
+
+</details>
+
 ### ☐ Checked on a real phone
 *Checked by: you*
 
@@ -518,6 +544,60 @@ Resizing a desktop browser misses things: the iPhone notch, the on-screen keyboa
 
 ```
 Give me a 10-item checklist to run on my actual phone: every page, the menu, the call button, every form with the keyboard open, and sideways scrolling.
+```
+
+</details>
+
+## Every time you publish a page
+
+### ☐ Ping IndexNow
+*Checked by: you*
+
+One command tells Bing and the AI search tools that use it about your new or updated page.
+
+<details><summary>Fix it with Claude</summary>
+
+```
+Submit my new page to IndexNow: node scripts/indexnow.mjs submit --site https://mydomain --urls https://mydomain/new-page/
+```
+
+</details>
+
+### ☐ Request indexing in Google Search Console
+*Checked by: you*
+
+Google ignores IndexNow, and can take days or weeks to find a new page on a small site. This is the step most DIY owners skip. It takes 30 seconds.
+
+<details><summary>Fix it with Claude</summary>
+
+```
+Remind me how: Google Search Console → URL Inspection (top search bar) → paste the new URL → Request indexing. Once per page; repeating it doesn't help.
+```
+
+</details>
+
+### ☐ Link to it from at least two existing pages
+*Checked by: you*
+
+Pages nothing links to get found late and rank poorly. Links from your service pages or popular posts pass both visitors and Google to the new page.
+
+<details><summary>Fix it with Claude</summary>
+
+```
+Find 2–3 existing pages on my site where a link to [new page] would genuinely help the reader, and suggest the sentence and anchor text for each.
+```
+
+</details>
+
+### ☐ Re-run the audit on the new page
+*Checked by: check-url, check-layout*
+
+New pages are where placeholders, missing titles, oversized images and phone wobble sneak back in.
+
+<details><summary>Fix it with Claude</summary>
+
+```
+Run the checklist audit on my new page only: node scripts/audit.mjs --url https://mydomain/new-page/ --max-pages 1
 ```
 
 </details>

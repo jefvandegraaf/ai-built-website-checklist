@@ -28,6 +28,11 @@ AI-built sites look great on a 27-inch monitor and quietly fail on the boring de
 - robots.txt, sitemap.xml, a real 404 page (not a "soft 404")
 - LocalBusiness schema, security headers, insecure `http://` resources, stylesheet caching
 - Old URLs redirected (Cloudflare Pages silently ignores `301!` and `404` rules)
+- **Speed:** Google PageSpeed Insights on phone and desktop, with real-visitor Core Web Vitals and the biggest wins to fix (free Google API key needed)
+
+**Every time you publish**
+- **IndexNow** ping for Bing, ChatGPT search, Copilot and DuckDuckGo (`scripts/indexnow.mjs`), plus the reminder most DIY owners skip: request indexing in Google Search Console, because Google doesn't use IndexNow
+- Internal links to the new page, and a quick re-audit
 
 **First 30 days**: what to watch in Google Search Console week by week. See [CHECKLIST.md](CHECKLIST.md).
 
@@ -52,7 +57,7 @@ npx playwright install chromium
 node scripts/audit.mjs --url https://yourdomain.com
 ```
 
-Add `--dir ../your-project` to also check your project files, and `--pages-dev https://yourproject.pages.dev` to check your Cloudflare preview is hidden from Google. `--no-layout` skips the browser checks.
+Add `--dir ../your-project` to also check your project files, and `--pages-dev https://yourproject.pages.dev` to check your Cloudflare preview is hidden from Google. `--no-layout` skips the browser checks, and `--no-speed` skips PageSpeed Insights.
 
 The report is saved to `reports/yourdomain.com-YYYY-MM-DD.md`, with a fix prompt under every failed item.
 
@@ -63,7 +68,9 @@ The report is saved to `reports/yourdomain.com-YYYY-MM-DD.md`, with a fix prompt
 | `scripts/check-url.mjs` | Fetches your live pages, headers, robots.txt and sitemap, and probes for exposed files | Node only |
 | `scripts/check-source.mjs` | Reads your project folder: secrets, private files, placeholders, SEO tags, CSS risks | Node only |
 | `scripts/check-layout.mjs` | Opens your pages in a real browser at phone (375px) and desktop (1440px) width and measures them | Playwright |
+| `scripts/check-speed.mjs` | Runs Google PageSpeed Insights on phone and desktop | Free Google API key (`PSI_API_KEY`) |
 | `scripts/audit.mjs` | Runs whichever apply and writes the report | |
+| `scripts/indexnow.mjs` | Sets up IndexNow and submits new or changed pages | Node only |
 
 Everything is **read-only**: it never changes your site. The browser check blocks common analytics scripts (Google Analytics, Fathom, Plausible, PostHog and others) so testing doesn't pollute your stats.
 

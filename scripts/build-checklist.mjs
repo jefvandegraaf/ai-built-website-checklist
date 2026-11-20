@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CHECKS, PHASES } from '../lib/checks.mjs';
 
-const HOW = { url: 'check-url', source: 'check-source', layout: 'check-layout', manual: 'you' };
+const HOW = { url: 'check-url', source: 'check-source', layout: 'check-layout', speed: 'check-speed', manual: 'you' };
 const out = [];
 out.push('# The AI-Built Website Launch Checklist', '');
 out.push('Every item has a reason and a copy-paste prompt you can give Claude Code to fix it. "Checked by" shows which script tests it automatically; "you" means it needs a human.', '');
