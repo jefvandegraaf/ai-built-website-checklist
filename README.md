@@ -2,6 +2,8 @@
 
 > **Beta.** This public version is new and still being tested on more sites. It's based on the launch checks I run on my own and my clients' websites. Some warnings are judgement calls. If a check gets something wrong, please [open an issue](https://github.com/jefvandegraaf/ai-built-website-checklist/issues).
 
+**Free to use.** If it helps you, [support the project on my Patron page](https://jefvandegraaf.com/patron/).
+
 A free pre- and post-launch audit for AI-built small business websites. Point it at your site, and it tells you what's broken, why it matters, and gives you a copy-paste Claude prompt to fix each item.
 
 AI-built sites look great on a 27-inch monitor and quietly fail on the boring details. This catches them before your customers (or Google) do.
@@ -81,6 +83,14 @@ Everything is **read-only**: it never changes your site. The browser check block
 ## Built your site with the starter kit?
 
 The [Claude Code Small Business Website Starter Kit](https://github.com/jefvandegraaf/claude-code-smb-website-starter-kit) builds sites that pass most of this out of the box. Its Step 7 sends you here.
+
+## Found this helpful?
+
+This is free, and it stays free. If it saved you time, money or a developer's invoice, please [leave a tip or become a patron](https://jefvandegraaf.com/patron/): one-off tips start at $3, and monthly support starts at $5. It keeps these tools maintained and updated.
+
+Don't let Jef starve.
+
+[**Support Jef on the Patron page →**](https://jefvandegraaf.com/patron/)
 
 ## Rather have someone do it?
 
